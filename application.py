@@ -1,7 +1,6 @@
 from flask import Flask,request,render_template,jsonify
 from src.pipelines.prediction_pipeline import CustomData,PredictPipeline
 
-
 application=Flask(__name__)
 
 app=application
@@ -36,6 +35,5 @@ def predict_datapoint():
 
         return render_template('form.html',final_result=results)
     
-
 if __name__=="__main__":
     app.run(host='0.0.0.0',debug=True)

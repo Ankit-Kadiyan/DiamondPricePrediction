@@ -7,12 +7,14 @@ from typing import List
 
 HYPEN_E_DOT='-e .'
     
-def get_requirements(file_path: str) -> List[str]:
-    requirements = []
+def get_requirements(file_path: str)->List[str]:
+    requirements=[]
     
     with open(file_path) as file_obj:
         # Read lines from requirements.txt and strip the '\n' character
-        requirements = [req.strip() for req in file_obj.readlines()]
+        # requirements = [req.strip() for req in file_obj.readlines()]
+        requirements=file_obj.readlines()
+        requirements=[req.replace('\n','') for req in requirements]
 
     # Remove all occurrences of HYPEN_E_DOT
     requirements = [req for req in requirements if req != HYPEN_E_DOT]

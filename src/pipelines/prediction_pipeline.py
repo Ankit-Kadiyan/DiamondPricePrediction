@@ -21,7 +21,6 @@ class PredictPipeline:
 
             pred=model.predict(data_scaled)
             return pred
-            
 
         except Exception as e:
             logging.info("Exception occured in prediction")
@@ -51,6 +50,7 @@ class CustomData:
 
     def get_data_as_dataframe(self):
         try:
+            #Convert the input Data into Dictionary
             custom_data_input_dict = {
                 'carat':[self.carat],
                 'depth':[self.depth],
@@ -62,6 +62,7 @@ class CustomData:
                 'color':[self.color],
                 'clarity':[self.clarity]
             }
+            #Convert the Dict into Dataframe
             df = pd.DataFrame(custom_data_input_dict)
             logging.info('Dataframe Gathered')
             return df

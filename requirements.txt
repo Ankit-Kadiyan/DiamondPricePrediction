@@ -3,6 +3,4 @@ numpy
 scikit-learn
 Flask
 seaborn
-matplotlib
-pickle
 #-e .

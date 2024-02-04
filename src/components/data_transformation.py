@@ -22,7 +22,7 @@ class DataTransformationconfig:
 ## Data ingestionconfig class
 class DataTransformation:
     def __init__(self):
-        self.data_transformation_config=DataTransformation()
+        self.data_transformation_config=DataTransformationconfig()
 
     def get_data_transformation_object(self):
 
@@ -47,7 +47,7 @@ class DataTransformation:
                 ]
             )
 
-            # Categorigal Pipeline
+            # Categorigal Pipeline  
             cat_pipeline=Pipeline(
                 steps=[
                 ('imputer',SimpleImputer(strategy='most_frequent')),
@@ -78,7 +78,6 @@ class DataTransformation:
             logging.info('Read train and test data completed')            
             logging.info(f'Train Dataframe head : \n{train_df.head().to_string()}')            
             logging.info(f'Test Dataframe head : \n{test_df.head().to_string()}')            
-
             logging.info('Obtaining preprocessing object')
 
             preprocessing_obj = self.get_data_transformation_object()
@@ -87,7 +86,6 @@ class DataTransformation:
             drop_columns = [target_column_name, 'id']
 
             ## Featureas into Independent and dependent features
-
             input_feature_train_df = train_df.drop(columns=drop_columns,axis=1)
             target_feature_train_df=train_df[target_column_name]
 

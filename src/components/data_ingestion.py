@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
 ## Initialize  the data ingestion configration
-@dataclass
+@dataclass  #As we used @dataclass so no need to use __init__
 class DataIngestionconfig:
     train_data_path=os.path.join('artifacts','train.csv')
     test_data_path=os.path.join('artifacts','test.csv')
@@ -22,7 +22,7 @@ class DataIngestion:
         logging.info('Data Ingestion Starts')
 
         try:
-            df=pd.read_csv(os.path.join('notebooks/dtat','gemstone.csv'))
+            df=pd.read_csv(os.path.join('notebooks/data','gemstone.csv'))
             logging.info('Dataset read as pandas Dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path),exist_ok=True)
@@ -44,3 +44,4 @@ class DataIngestion:
         
         except Exception as e:
             logging.info('Error occured in Data Ingestion config')
+            raise CustomException(e,sys)
